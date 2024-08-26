@@ -1,0 +1,14 @@
+# the image tag should match the installed version of @playwright/test so that the included browser versions expected by playwright can be utilized
+FROM mcr.microsoft.com/playwright:v1.46.1-focal
+
+ENV NODE_OPTIONS=--max_old_space_size=4096
+
+# Set the work directory for the application
+WORKDIR /var/app
+
+# Copy files
+COPY . .
+
+# Install dependencies
+RUN npm ci
+
